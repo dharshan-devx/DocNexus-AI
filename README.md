@@ -1,25 +1,62 @@
-# Multi-Doc RAG
+# DocNexus AI
 
-## About
+**DocNexus AI** is a multi-document Retrieval-Augmented Generation (RAG) system built to query, compare, and synthesize insights across independent documents. Unlike traditional RAG pipelines that treat a knowledge base as a single source, this project is designed to handle cross-document reasoning with document-level isolation and contextual retrieval.
 
-This application enables Retrieval-Augmented Generation (RAG) across multiple documents simultaneously. While standard RAG implementations often process a single document or treat an entire knowledge base as a monolithic source, this solution is specifically designed to isolate and synthesize information across distinct documents.
+The primary use case is analyzing financial 10-K reports, where questions may require comparing data points across multiple companies. For example, a query such as:
 
-The primary use case is querying and comparing financial 10-K reports. For example, a query such as "How much are Apple and AMD investing in R&D?" requires retrieving and comparing specific data points from both the Apple and AMD 10-K reports independently. This application dynamically handles such multi-document inquiries.
+> "How much are Apple and AMD investing in R&D?"
 
-## Technologies Used
+requires retrieving relevant information from each report independently before generating a grounded response.
 
-- **LangChain**: Orchestration and framework
-- **Elasticsearch**: Vector storage and retrieval
-- **OpenAI (GPT-3.5)**: Large Language Model for generation
+---
+
+## Features
+
+- Query multiple documents simultaneously
+- Perform cross-document comparison and synthesis
+- Retrieve relevant passages using vector search
+- Generate grounded answers using an LLM
+- Support financial analysis workflows such as 10-K report comparison
+- End-to-end notebook-based implementation for experimentation and reproducibility
+
+---
+
+## Tech Stack
+
+- **LangChain** — orchestration and RAG pipeline framework
+- **Elasticsearch** — vector storage and retrieval
+- **OpenAI GPT-3.5** — response generation
+- **Python** — core implementation
+
+---
+
+## How It Works
+
+1. Documents are ingested and split into chunks.
+2. Chunks are embedded and indexed in Elasticsearch.
+3. The system retrieves relevant information from multiple documents independently.
+4. Retrieved context is passed to the language model.
+5. The model generates a final response grounded in the retrieved sources.
+
+---
 
 ## Usage
 
-Please refer to the [getting started notebook](blog_nb.ipynb) for an end-to-end implementation and demonstration of the RAG pipeline.
+To get started, open the notebook:
 
-The [`experiments`](experiments) directory contains developmental code and preliminary research scripts used during the initial implementation phase.
+- [`blog_nb.ipynb`](blog_nb.ipynb)
 
-## Documentation
+This notebook contains the end-to-end implementation of the RAG pipeline, including document processing, retrieval, and generation.
 
-A detailed explanation of the architecture and implementation is available in the accompanying blog post at [datascience.fm](https://datascience.fm/multi-doc-rag-on-10k-reports/).
+The [`experiments`](experiments) directory contains development scripts and prototype code used during early experimentation.
 
-**Note:** The dependencies listed in the blog post are sufficient to run the [notebook](blog_nb.ipynb). The included `requirements.txt` file contains additional developmental dependencies that may not be required for standard usage.
+---
+
+## Project Structure
+
+```bash
+.
+├── blog_nb.ipynb        # End-to-end implementation notebook
+├── experiments/         # Experimental and prototype scripts
+├── requirements.txt     # Project dependencies
+└── README.md            # Project documentation
