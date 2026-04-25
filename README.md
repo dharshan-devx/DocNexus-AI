@@ -2,24 +2,24 @@
 
 ## About
 
-Query multiple documements using RAG! RAG is usually performed on a single document source or the entire knowledge base is treated as a single source. This RAG application can do much more than that!
+This application enables Retrieval-Augmented Generation (RAG) across multiple documents simultaneously. While standard RAG implementations often process a single document or treat an entire knowledge base as a monolithic source, this solution is specifically designed to isolate and synthesize information across distinct documents.
 
-The primary usecase this was built for was to query and compare 10K reports. An example query might look like this: "How much are Apple and AMD investing in R&D?". Now this question cannot be treated as a single question because information from both the AMD and Apple 10K report is required. This application accommodates for this.
+The primary use case is querying and comparing financial 10-K reports. For example, a query such as "How much are Apple and AMD investing in R&D?" requires retrieving and comparing specific data points from both the Apple and AMD 10-K reports independently. This application dynamically handles such multi-document inquiries.
 
-## Tools used:
+## Technologies Used
 
-- LangChain
-- ElasticSearch VectorDB
-- GPT3.5
+- **LangChain**: Orchestration and framework
+- **Elasticsearch**: Vector storage and retrieval
+- **OpenAI (GPT-3.5)**: Large Language Model for generation
 
 ## Usage
 
-Check out [this](blog_nb.ipynb) notebook to get started. You'll find the end-to-end implementation of RAG here.
+Please refer to the [getting started notebook](blog_nb.ipynb) for an end-to-end implementation and demonstration of the RAG pipeline.
 
-[This](experiments) folder has the spaghetti code written by me during experimentation and breaking my head while implementing this.
+The [`experiments`](experiments) directory contains developmental code and preliminary research scripts used during the initial implementation phase.
 
-## Explanation
+## Documentation
 
-Check out the accompanying blog post over at [datascience.fm](https://datascience.fm/multi-doc-rag-on-10k-reports/).
+A detailed explanation of the architecture and implementation is available in the accompanying blog post at [datascience.fm](https://datascience.fm/multi-doc-rag-on-10k-reports/).
 
-Note: The packages installed in the blog post should suffice to run the [notebook](blog_nb.ipynb). I strongly reccomend you to not use my [requirements.txt](requirements.txt) because it has a lot of uneccessary packages and you will end up downloading a lot more packages than necessary.
+**Note:** The dependencies listed in the blog post are sufficient to run the [notebook](blog_nb.ipynb). The included `requirements.txt` file contains additional developmental dependencies that may not be required for standard usage.
